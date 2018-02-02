@@ -1,0 +1,34 @@
+<%= form_with(model: rental, local: true) do |form| %>
+  <% if rental.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(rental.errors.count, "error") %> prohibited this rental from being saved:</h2>
+
+      <ul>
+      <% rental.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :user_id %>
+   
+	<%= form.collection_select :user_id, User.order(:userName), :id, :userName %>
+  </div>
+
+  <div class="field">
+    <%= form.label :movie_id %>
+  
+	<%= form.collection_select :movie_id, Movie.order(:title), :id, :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :returnDate %>
+    <%= form.date_select :returnDate, id: :rental_returnDate %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

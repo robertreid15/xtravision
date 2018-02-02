@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+
+<body>
+<div id= "banner">
+	<%= image_tag("movies.jpeg", :size=>"250x125")%>
+</div>	
+<%=yield%>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Director</th>
+      <th>Category</th>
+      <th>Poster</th>
+      <th>Trailer</th>
+      <th>Available</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @movies.each do |movie| %>
+      <tr>
+        <td><%= movie.title %></td>
+        <td><%= movie.director %></td>
+        <td><%= movie.category_id %></td>
+		<td><%= image_tag movie.poster, :size=> "150x100" %></td>
+		<td><%= sanitize movie.trailer,:tags=>['iframe']%></td>
+        <td><%= movie.available %></td>
+        <td><%= link_to 'Show', movie %></td>
+        <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
+        <td><%= link_to 'Destroy', movie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+<%= link_to 'New Movie', new_movie_path %>
+
+
+
+<div id= "columns">
+<ul>
+	<li><%= link_to"users",'http://localhost:3000/users'%></li>
+	<li><%= link_to"rentals",'http://localhost:3000/rentals'%></li>
+	<li><%= link_to"categories",'http://localhost:3000/categories'%></li>
+</ul>
+</div>	
+<%=yield%>

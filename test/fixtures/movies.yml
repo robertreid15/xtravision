@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  director: MyString
+  category_id: 1
+  poster: MyString
+  trailer: MyText
+  available: false
+
+two:
+  title: MyString
+  director: MyString
+  category_id: 1
+  poster: MyString
+  trailer: MyText
+  available: false
